@@ -8,17 +8,20 @@ for(let i = 1;i<=10;i++){
 	list.appendChild(listItem);
 }
 
+function addMoreItems() {
+
+  const initialItems = list.querySelectorAll("li");
+  for (let i = 0; i < initialItems.length; i++) {
+    const clonedItem = initialItems[i].cloneNode(true);
+    list.appendChild(clonedItem);
+  }
+}
+
 list.addEventListener("scroll", function() {
 	if(list.scrollHeight - list.scrollTop === list.clientHeight) {
 		addMoreItems();
 	}
 });
 
-function addMoreItems() {
-	for(let i = 1;i<=2;i++){
-		const newItem = document.createElement("li");
-		newItem.textContent = `Item ${list.children.length + i}`;
-		list.appendChild(newItem);
-	}
-}
+
 
