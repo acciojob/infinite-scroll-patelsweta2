@@ -1,15 +1,8 @@
-//your code here!
-
 const list = document.getElementById("infi-list");
 
-for(let i = 1;i<=10;i++){
-	const listItem = document.getElementById("li");
-	listItem.textContent = `Item ${i}`;
-	list.appendChild(listItem);
-}
-
+// Function to add more items
 function addMoreItems() {
-
+  // Clone the initial items and append them to the list
   const initialItems = list.querySelectorAll("li");
   for (let i = 0; i < initialItems.length; i++) {
     const clonedItem = initialItems[i].cloneNode(true);
@@ -17,11 +10,19 @@ function addMoreItems() {
   }
 }
 
-list.addEventListener("scroll", function() {
-	if(list.scrollHeight - list.scrollTop === list.clientHeight) {
-		addMoreItems();
-	}
+// Add an event listener for scrolling
+list.addEventListener("scroll", function () {
+  // Check if the user has reached the end of the list
+  if (list.scrollHeight - list.scrollTop === list.clientHeight) {
+    // If yes, add more items
+    addMoreItems();
+  }
 });
 
-
-
+// Initial items
+const initialItemCount = 10;
+for (let i = 1; i <= initialItemCount; i++) {
+  const listItem = document.createElement("li");
+  listItem.textContent = `Item ${i}`;
+  list.appendChild(listItem);
+}
